@@ -1,3 +1,7 @@
 //server parameters
+const server = require('./app')
 
-console.log(__dirname);
+
+server.listen(3000,()=>{
+    console.log('Application Tours started...');
+})
