@@ -1,0 +1,64 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+
+        <form name="tour_form">
+            <label>Tour name</label>  
+            <input type="text" name="name"/> <br/>
+
+            <label>Tour price</label>  
+            <input type="number" name="price"/> <br/>
+
+            <label>Tour duration</label>  
+            <input type="text" name="duration"/> <br/>
+
+
+            <button type="submit" id="submit">Send</button>
+        </form>
+
+
+
+        <script>
+            document.getElementById("submit")
+            .addEventListener('click',function(e){
+
+                e.preventDefault();
+
+                let form = document.forms["tour_form"];
+                let name_value = form.elements["name"].value;
+                let price_value = form.elements["price"].value;
+                let duration_value = form.elements["duration"].value;
+
+                let author = 'Bob';
+
+                let json_data = JSON.stringify({name:name_value, 
+                    price:price_value,
+                    duration:duration_value});
+
+
+                let request = new XMLHttpRequest();
+                request.open("POST","/api/v1/tours",true);
+                request.setRequestHeader("Content-type","application/json");
+
+                request.addEventListener("load", function(){
+                    let response = JSON.parse(request.response);
+                    
+                    alert(JSON.stringify(response));
+
+                });
+
+                request.send(json_data);
+
+
+
+
+                
+            })
+
+        </script>
+
+    </body>
+</html>

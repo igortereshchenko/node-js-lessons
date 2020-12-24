@@ -20,7 +20,9 @@ const tourSchema =new mongoose.Schema(
             
     price:{
             type:Number
-            }        
+            },
+            
+    author:{type:String}        
 
 }
 );

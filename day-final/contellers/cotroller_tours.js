@@ -6,15 +6,27 @@ const Tour = require('./../model/toursmodel')
 
 
 
-exports.get_all_tours=(request, response)=>{
+exports.get_all_tours= async (request, response)=>{
 
-    response.status(200).json(
-        {
-            status:"success",
-            results:tours.length,
-            data: { tours}
-        }
-    );
+    try{
+
+        const tours =await Tour.find();
+
+
+        response.status(200).json(
+            {
+                status:"success",
+                results:tours.length,
+                data: { tours}
+            }
+        );
+    }catch(error){
+        response.status(404).json({
+            status:'fail',
+            message:error
+        });
+
+    }
 }
 
 
