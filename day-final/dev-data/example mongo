@@ -1,0 +1,21 @@
+db.users.updateOne(  { name: "boba"}, 
+
+	{$set: {
+			
+				hotels:{
+						 "1.12.2000":{
+										name:'Hilton',
+										number: 302
+									},
+						 "23.12.2010" :{
+										name:'Ibis',
+										number:100
+										}				
+					
+						},
+				age:30
+			}
+    }	
+);
+
+db.users.find( {name: 'boba'} )['hotels']['1.12.2002'][number]
